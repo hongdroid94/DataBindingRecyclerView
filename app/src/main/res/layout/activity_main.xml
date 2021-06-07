@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data class="Main">
+        <import type="androidx.databinding.ObservableArrayList"/>
+        <import type="com.hongdroid.databindingrecyclerview.model.Movie"/>
+
+        <variable
+            name="activity"
+            type="com.hongdroid.databindingrecyclerview.MainActivity" />
+
+        <variable
+            name="movieList"
+            type="ObservableArrayList&lt;Movie&gt;" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            bind:item="@{movieList}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                android:onClick="@{activity::setAddItem}"
+                android:backgroundTint="@color/black"
+                android:text="샘플 아이템 추가" />
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                android:onClick="@{activity::setDeleteItem}"
+                android:backgroundTint="@color/purple_200"
+                android:text="샘플 아이템 제거" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+</layout>
